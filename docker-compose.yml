@@ -1,0 +1,47 @@
+version: "3.8"
+
+services:
+  growthsauras:
+    image: gaurav226/growthsauras:latest
+    container_name: growthsauras
+    restart: unless-stopped
+
+  nginx-proxy:
+    image: nginx:stable-alpine
+    container_name: nginx_proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      # This still uses a bind mount because it's a configuration file you manage
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      # These now use named volumes, which are defined at the bottom
+      - certbot_www:/var/www/certbot
+      - certbot_conf:/etc/letsencrypt
+    depends_on:
+      - growthsauras
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot_container
+    restart: unless-stopped
+    volumes:
+      # Use the same named volumes as nginx
+      - certbot_www:/var/www/certbot
+      - certbot_conf:/etc/letsencrypt
+    command: >-
+      sh -c "
+        certbot certonly --webroot --webroot-path=/var/www/certbot \
+        --email your-email@example.com --agree-tos --no-eff-email \
+        -d your-domain.com --non-interactive && \
+        while :; do \
+          certbot renew --quiet; \
+          sleep 12h & wait $${!}; \
+        done
+      "
+
+# Top-level 'volumes' key defines the named volumes
+volumes:
+  certbot_www:
+  certbot_conf:
