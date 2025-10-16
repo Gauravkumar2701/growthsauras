@@ -15,7 +15,7 @@ services:
       - "443:443"
     volumes:
       # This still uses a bind mount because it's a configuration file you manage
-      - /root/nginx/default:/etc/nginx/conf.d/default.conf
+      - /root/nginx/default.conf:/etc/nginx/conf.d/default.conf
       # These now use named volumes, which are defined at the bottom
       - certbot_www:/var/www/certbot
       - certbot_conf:/etc/letsencrypt
