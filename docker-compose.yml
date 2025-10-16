@@ -35,7 +35,7 @@ services:
     container_name: certbot_container
     restart: unless-stopped
     volumes:
-      - root/growthsauras/certbot/init-letsencrypt.sh:/init-letsencrypt.sh
+      - /root/growthsauras/certbot/init-letsencrypt.sh:/init-letsencrypt.sh
       - certbot_www:/var/www/certbot
       - certbot_conf:/etc/letsencrypt
     entrypoint: /init-letsencrypt.sh
