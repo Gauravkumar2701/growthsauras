@@ -12,7 +12,7 @@ export const CTA = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button size="lg" asChild className="text-lg px-8 py-6">
-            <a href="https://calendly.com/hot-inbox/intro" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendly.com/growthsauras/intro" target="_blank" rel="noopener noreferrer">
               Book a Call Now!
             </a>
           </Button>

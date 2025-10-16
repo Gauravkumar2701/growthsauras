@@ -5,7 +5,7 @@ export const About = () => {
         <h2 className="text-4xl md:text-5xl font-bold mb-8 text-foreground">About Us</h2>
         <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
           <p>
-            We're the team behind cold email systems that actually work. Hot Inbox was built for founders, 
+            We're the team behind cold email systems that actually work. GrowthSauras was built for founders, 
             owners, and growth teams who've tried everything from DIY tools to freelancers to "agencies" 
             and still couldn't book consistent, qualified meetings.
           </p>

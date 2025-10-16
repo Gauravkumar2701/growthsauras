@@ -31,7 +31,7 @@ const faqs = [
     answer: "We build and manage done-for-you (DFY) cold email systems that generate leads and book meetings. From domain and inbox setup to copywriting, list building, targeting, deliverability, and optimization.",
   },
   {
-    question: "What makes Hot Inbox different from other agencies?",
+    question: "What makes GrowthSauras different from other agencies?",
     answer: "Most agencies run cold outreach on poor infrastructure with generic messaging. We engineer full-stack systems built for scale, safety, and reply rate, using a battle-tested approach that combines deliverability expertise, dynamic personalization, and deep campaign strategy.",
   },
   {

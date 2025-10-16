@@ -29,7 +29,7 @@ export const WhyUs = () => {
     <section className="py-20 px-4 bg-gradient-to-b from-secondary/30 to-background">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
-          <p className="text-sm font-semibold text-primary mb-4">Why Hot Inbox?</p>
+          <p className="text-sm font-semibold text-primary mb-4">Why GrowthSauras?</p>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
             We turn cold outreach into your #1 growth channel
           </h2>
