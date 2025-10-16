@@ -33,8 +33,8 @@ services:
     command: >-
       sh -c "
         certbot certonly --webroot --webroot-path=/var/www/certbot \
-        --email your-email@example.com --agree-tos --no-eff-email \
-        -d your-domain.com --non-interactive && \
+        --email gouravkumar2701@gmail.com --agree-tos --no-eff-email \
+        -d growthsauras.com --non-interactive && \
         while :; do \
           certbot renew --quiet; \
           sleep 12h & wait $${!}; \
