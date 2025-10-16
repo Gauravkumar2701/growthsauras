@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     container_name: react-app
     volumes:
-      - react-app:/app/build
+      - react-app:/app/dist
     networks:
       - app-network
     restart: always
