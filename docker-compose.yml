@@ -1,45 +1,19 @@
 version: "3.8"
-
 services:
-  growthsauras:
-    image: gaurav226/growthsauras:latest # Corrected image name
-    container_name: growthsauras
-    restart: unless-stopped
-    # If your app runs on a specific port (e.g., 3000), expose it here
-    expose:
-      - "80:80"
-
-  nginx-proxy:
-    image: nginx:stable-alpine
-    container_name: nginx_proxy
-    restart: unless-stopped
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
     ports:
-      - "80:80"
-      - "443:443"
+      - "80:80" # HTTP port
+      - "443:443" # HTTPS port
     volumes:
-      - /root/nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - certbot_www:/var/www/certbot
-      - certbot_conf:/etc/letsencrypt
-    command: >
-      sh -c "
-        while [ ! -f /etc/letsencrypt/live/growthsauras.com/fullchain.pem ]; do 
-          sleep 1; 
-        done;
-        nginx -g 'daemon off;'
-      "
-    depends_on:
-      - growthsauras
+      - ./nginx.conf:/etc/nginx/nginx.conf # Nginx config file
+      - ./certs:/etc/ssl/certs # Folder containing SSL certificates
+      - ./frontend/build:/usr/share/nginx/html # Built React app folder
+    networks:
+      - app-network
+    restart: always
 
-  certbot:
-    image: certbot/certbot
-    container_name: certbot_container
-    restart: unless-stopped
-    volumes:
-      - /root/growthsauras/certbot/init-letsencrypt.sh:/init-letsencrypt.sh
-      - certbot_www:/var/www/certbot
-      - certbot_conf:/etc/letsencrypt
-    entrypoint: init-letsencrypt.sh
-
-volumes:
-  certbot_www:
-  certbot_conf:
+networks:
+  app-network:
+    driver: bridge
