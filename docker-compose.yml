@@ -31,7 +31,6 @@ services:
       - certbot_www:/var/www/certbot
       - certbot_conf:/etc/letsencrypt
     command: >-
-      command: >-
       sh -c "
         certbot certonly --webroot --webroot-path=/var/www/certbot \
         --email gouravkumar2701@gmail.com --agree-tos --no-eff-email \
